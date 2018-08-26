@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>ready-or-not example</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  readyon = {
+    config: {
+      log: true
+    }
+  };
+</script>
+<script src="../ready-init.js"></script>
+
+<div>
+  <p>
+    &ldquo;ready&rdquo; was fired <span class="total-ready-count">0</span> times.
+  </p>
+  <p>
+    Check the browser console for more information.
+  </p>
+  <script type="text/javascript">
+
+    readyon.onReady(function() {
+        console.log('This is called everytime "ready" fires.');
+        $('.total-ready-count').text(1*$('.total-ready-count').text() + 1);
+    });
+
+    readyon.onReadyOnce(function() {
+        console.log('This is called only once, after the DOM content has been loaded.');
+
+        readyon.onReadyOnce(function() {
+            console.log('This is called only once, after the AJAX request has been completed.');
+        });
+
+        console.log('Let\'s do a simple AJAX request ...');
+        $.ajax({
+            url: 'https://jsonplaceholder.typicode.com/todos',
+            method: 'get',
+            async: true
+        });
+
+        readyon.onReadyOnce(function() {
+            console.log('This is also called only once, after the AJAX request has been completed.');
+        });
+    });
+
+  </script>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="../ready-on.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
