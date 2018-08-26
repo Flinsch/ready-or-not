@@ -1,0 +1,19 @@
+{
+  "name": "ready-or-not",
+  "version": "1.0.0",
+  "description": "A flexible \"ready\" handler container that calls certain callbacks after the DOM content has been loaded and after an AJAX request has been completed.",
+  "keywords": ["ready-or-not", "ready-on", "ready", "DOMContentLoaded", "load", "onload", "ajax"],
+  "author": "Flinsch <flinsch@gmx.net>",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Flinsch/ready-or-not.git",
+    "type": "git"
+  },
+  "homepage": "https://github.com/Flinsch/ready-or-not",
+  "bugs": "https://github.com/Flinsch/ready-or-not/issues",
+  "files": [
+    "ready-init.js",
+    "ready-on.js"
+  ],
+  "main": "ready-init.js"
+}
