@@ -1,0 +1,19 @@
+
+.scrollable-column {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+ul.posts > li {
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+ul.posts > li.selected {
+    background: #eee;
+    border: 1px solid #000;
+}
+
+ul.comments:not(:empty) + * {
+    display: none;
+};
