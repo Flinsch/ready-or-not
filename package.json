@@ -12,8 +12,7 @@
   "homepage": "https://github.com/Flinsch/ready-or-not",
   "bugs": "https://github.com/Flinsch/ready-or-not/issues",
   "files": [
-    "ready-init.js",
-    "ready-on.js"
+    "readyon.js",
   ],
-  "main": "ready-init.js"
+  "main": "readyon.js"
 }

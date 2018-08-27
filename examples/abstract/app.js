@@ -1,4 +1,6 @@
 
+readyon.bind();
+
 readyon.onReady(function() {
     console.log('This is also called everytime "ready" fires.');
 });

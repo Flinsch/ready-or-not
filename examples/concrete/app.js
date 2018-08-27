@@ -1,4 +1,6 @@
 
+readyon.bind();
+
 readyon.onReady(function() {
     $('[data-toggle="tooltip"]').tooltip({
         html: true

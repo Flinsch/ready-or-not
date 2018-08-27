@@ -11,20 +11,16 @@ var readyon = readyon || {};
         log: false
     };
 
-    readyon.config = readyon.config || {};
-
-    for (var prop in defaultConfig) {
-        if (!(prop in readyon.config)) {
-            readyon.config[prop] = defaultConfig[prop];
-        }
-    }
+    readyon.config = {};
 
     readyon.onReady = function(callback) {
         onReadyCallbacks.push(callback);
+        return readyon;
     };
 
     readyon.onReadyOnce = function(callback) {
         onReadyOnceCallbacks.push(callback);
+        return readyon;
     };
 
     readyon.ready = function(data) {
@@ -40,5 +36,32 @@ var readyon = readyon || {};
         for (var i = 0; i < tmpReadyOnceCallbacks.length; ++i) {
             tmpReadyOnceCallbacks[i](data);
         }
+        return readyon;
+    };
+
+    readyon.init = function(config) {
+        config = config || {};
+        for (var prop in defaultConfig) {
+            if (prop in config) {
+                readyon.config[prop] = config[prop];
+            } else {
+                readyon.config[prop] = defaultConfig[prop];
+            }
+        }
+        return readyon;
+    };
+
+    readyon.bind = function() {
+        if (readyon.config.domLoadDefault) {
+            $(function() {
+                readyon.ready();
+            });
+        }
+        if (readyon.config.ajaxCompleteDefault) {
+            $(document).ajaxComplete(function() {
+                readyon.ready();
+            });
+        }
+        return readyon;
     };
 })();
