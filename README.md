@@ -1,10 +1,16 @@
-# ready-or-not
+ready-or-not
+============
 
 ready-or-not is a small JavaScript module to run "ready" handlers flexibly and possibly multiple times, for example every time an AJAX request has been completed and after the DOM content has been loaded.
 
+- [Motivation](#motivation)
+- [Usage](#usage)
+- [Configuration options](#configuration-options)
+- [Remarks](#remarks)
+
 # Motivation
 
-The purpose is similar to jQuery's ready event (or the native DOMContentLoaded event), for example:
+The purpose of ready-or-not is similar to jQuery's ready event (or the native DOMContentLoaded event). For example, you would like to do something like this with jQuery:
 
 ```JS
 $(function() {
@@ -41,13 +47,17 @@ Furthermore, one potential issue with jQuery's event handling is that jQuery mus
 <html>
   ...
   <body>
+
     ... some stuff here ...
+
     <script type="text/javascript">
-      $(function() { // $ is not defined at this point!
+      $(function() { // $ is not yet defined at this point!
           // request-specific DOM logic
       });
     </script>
+
     ... more stuff there ...
+
     <script src="jquery.js"></script>
   </body>
 </html>
@@ -104,9 +114,9 @@ Unfortunately, if DOM-specific inline JavaScript is required, we may not be able
     <script type="text/javascript">
       readyon.init();
     </script>
-    
+
     ... actual HTML and possible inline JavaScript ...
-    
+
     <script src="jquery.js"></script>
     <script src="your-app.js"></script>
   </body>
@@ -120,15 +130,15 @@ Make sure to bind the module (or handle calls to ```readyon.ready()``` manually)
 readyon.bind();
 ```
 
-Otherwise, if you are sure that no logic has to be executed on the DOM via inline JavaScript, the script can also be put at the bottom of the document:
+Otherwise, if you are sure that no logic has to be executed on the DOM via inline JavaScript, the module file can also be put at the bottom of the document:
 
 ```HTML
 <html>
   ...
   <body>
-    
+
     ... actual HTML (without DOM-specific JavaScript) ...
-    
+
     <script src="jquery.js"></script>
     <script src="readyon.js"></script>
     <script src="your-app.js"></script>
