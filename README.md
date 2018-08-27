@@ -184,3 +184,4 @@ Things to remind when using the ready-or-not module:
 - If a call to ```readyon.bind()``` is omitted, ready-or-not works absolutely independently; not even jQuery is required then (but jQuery can still help you bind certain events, etc.).
 - If you want a specific ```data``` argument to be passed to ```readyon.ready()``` and thus to your registered handlers, you *have* to set up your own event bindings and/or perform manual calls to ```readyon.ready()```.
 - Handlers registered via ```readyon.onReady()``` are executed each time ```readyon.ready()``` is triggered; handlers registered via ```readyon.onReadyOnce()``` are executed only once ```readyon.ready()``` is triggered next time.
+- Handlers registered via ```readyon.onReady()``` are *always* executed *before* handlers registered via ```readyon.onReadyOnce()```.
