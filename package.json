@@ -12,7 +12,7 @@
   "homepage": "https://github.com/Flinsch/ready-or-not",
   "bugs": "https://github.com/Flinsch/ready-or-not/issues",
   "files": [
-    "readyon.js",
+    "readyon.js"
   ],
   "main": "readyon.js"
 }
