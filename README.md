@@ -41,7 +41,7 @@ $(document).ajaxComplete(function() {
 });
 ```
 
-Furthermore, one potential issue with jQuery's event handling is that jQuery must be defined before the first access occurs: For reasons I do not want to discuss here, developers are advised to include the script files at the end of the body element, at least the big ones. But more often than never a specific webpage requires to run logic on the DOM via inline JavaScript:
+Furthermore, one potential issue with jQuery's event handling is that jQuery must be defined before the first access occurs: For reasons that should not be discussed here, developers are advised to include the script files at the end of the body element, at least the big ones. But more often than never a specific webpage requires to run logic on the DOM via inline JavaScript:
 
 ```HTML
 <html>
@@ -94,7 +94,7 @@ readyon.ready(data || undefined);
 
 The setup of ready-or-not has been split up into two methods: ```init``` and ```bind```. The reason for this is that ```init``` can be used independently and as early as possible, while ```bind``` requires the previous definition of jQuery. ```bind``` can be omitted in case that you want to call ```readyon.ready()``` manually and/or bind it differently to certain events. If ```bind``` is omitted, jQuery may not be required at all (depending on your own needs) and the module works completely independently. 
 
-From the user's perspective, ```onReady``` and ```onReadyOnce``` are the core of the interface. After initializing the module, the example from the motivation above could look like this:
+From the user's perspective, ```onReady``` and ```onReadyOnce``` are the core of the interface. After initializing the module, the example from the [Motivation](#motivation) above could look like this:
 
 ```JS
 readyon.onReady(function() {
