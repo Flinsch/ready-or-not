@@ -1,3 +1,4 @@
+
 ready-or-not
 ============
 
@@ -75,6 +76,7 @@ ready-or-not provides a simple interface consisting of five methods encapsulated
 readyon.init(config || {});
 
 // Binds the module to jQuery's "ready" and "ajaxComplete" events.
+// Whenever one of these events is fired, the module's "ready" method will be triggered (see below).
 readyon.bind();
 
 // Registers a handler to be executed each time the module's "ready" method is triggered (see below).
@@ -92,7 +94,11 @@ readyon.ready(data || undefined);
 
 (For configuration options see [Configuration options](#configuration-options) below.)
 
-The setup of ready-or-not has been split up into two methods: ```init``` and ```bind```. The reason for this is that ```init``` can be used independently and as early as possible, while ```bind``` requires the previous definition of jQuery. ```bind``` can be omitted in case that you want to call ```readyon.ready()``` manually and/or bind it differently to certain events. If ```bind``` is omitted, jQuery may not be required at all (depending on your own needs) and the module works completely independently. 
+The setup of ready-or-not has been split up into two methods: ```init``` and ```bind```. The reason for this is that ```init``` can be used independently and as early as possible, while ```bind``` requires the previous definition of jQuery. ```bind``` can be omitted in case that you want to call ```readyon.ready()``` manually and/or bind it differently to certain events. If ```bind``` is omitted, jQuery may not be required at all (depending on your own needs) and the module works completely independently.
+
+> **Note:** ```bind``` can be omitted in case that you want to call ```readyon.ready()``` manually and/or bind it differently to certain events.
+
+> **Note:** If ```bind``` is omitted, ready-or-not works completely independently; not even jQuery is required then. But jQuery can still help you bind certain events, etc.
 
 From the user's perspective, ```onReady``` and ```onReadyOnce``` are the core of the interface. After initializing the module, the example from the [Motivation](#motivation) above could look like this:
 
@@ -153,6 +159,8 @@ Make sure to initialize and possibly bind the module again.
 readyon.init().bind();
 ```
 
+> **Note:** The use of ready-or-not addresses both aforementioned problems regarding the DRY principle and possible "$ is not defined" errors. In addition, you have the flexibility to distinguish between "each time" and "only once".
+
 # Configuration options
 
 The configuration options can be passed as an object to ```readyon.init()```, if necessary:
@@ -185,3 +193,13 @@ Things to remind when using the ready-or-not module:
 - If you want a specific ```data``` argument to be passed to ```readyon.ready()``` and thus to your registered handlers, you *have* to set up your own event bindings and/or perform manual calls to ```readyon.ready()```.
 - Handlers registered via ```readyon.onReady()``` are executed each time ```readyon.ready()``` is triggered; handlers registered via ```readyon.onReadyOnce()``` are executed only once ```readyon.ready()``` is triggered next time.
 - Handlers registered via ```readyon.onReady()``` are *always* executed *before* handlers registered via ```readyon.onReadyOnce()```.
+- To help you specify your own event bindings, here are the default definitions from the module's ```bind``` method:
+```JS
+$(function() {
+   readyon.ready();
+});
+
+$(document).ajaxComplete(function() {
+    readyon.ready();
+});
+```
