@@ -1,8 +1,18 @@
 {
   "name": "ready-or-not",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A flexible \"ready\" handler container that calls certain callbacks after the DOM content has been loaded and after an AJAX request has been completed.",
-  "keywords": ["ready-or-not", "ready-on", "readyon", "ready", "DOMContentLoaded", "load", "onload", "ajax", "complete"],
+  "keywords": [
+    "ready-or-not",
+    "ready-on",
+    "readyon",
+    "ready",
+    "DOMContentLoaded",
+    "load",
+    "onload",
+    "ajax",
+    "complete"
+  ],
   "author": "Flinsch <flinsch@gmx.net>",
   "license": "MIT",
   "repository": {
