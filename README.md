@@ -159,7 +159,7 @@ Make sure to initialize and possibly bind the module again.
 readyon.init().bind();
 ```
 
-> **Note:** The use of ready-or-not addresses both aforementioned problems regarding the DRY principle and possible "$ is not defined" errors. In addition, you have the flexibility to distinguish between "each time" and "only once".
+> **Note:** The use of ready-or-not addresses both aforementioned problems from the [Motivation](#motivation) regarding the DRY principle and possible "$ is not defined" errors. In addition, you have the flexibility to distinguish between "each time" and "only once".
 
 # Configuration options
 
