@@ -15,7 +15,7 @@ ready-or-not is a small JavaScript module to run "ready" handlers flexibly and p
 
 The purpose of ready-or-not is similar to jQuery's ready event (or the native DOMContentLoaded event). For example, you would like to do something like this with jQuery:
 
-```JS
+```js
 $(function() {
     $('[data-toggle="tooltip"]').tooltip({ html: true });
 });
@@ -23,7 +23,7 @@ $(function() {
 
 And if necessary, certain logic should also be executed on the DOM after each AJAX request:
 
-```JS
+```js
 $(document).ajaxComplete(function() {
     $('[data-toggle="tooltip"]').tooltip({ html: true });
 });
@@ -31,7 +31,7 @@ $(document).ajaxComplete(function() {
 
 These are only small examples, but when combined, they already violate the DRY principle. The violation could of course be resolved by encapsulating the common logic:
 
-```JS
+```js
 function myReady() {
     $('[data-toggle="tooltip"]').tooltip({ html: true });
 }
@@ -72,7 +72,7 @@ To avoid such problems, workarounds have to be tinkered. And this is where the r
 
 ready-or-not provides a simple interface consisting of five methods encapsulated in an object ```readyon```:
 
-```JS
+```js
 // Initializes the module.
 // The config object is optional (see "Configuration options").
 readyon.init(config || {});
@@ -104,7 +104,7 @@ The setup of ready-or-not has been split up into two methods: ```init``` and ```
 
 From the user's perspective, ```onReady``` and ```onReadyOnce``` are the core of the interface. After initializing the module, the example from the [Motivation](#motivation) above could look like this:
 
-```JS
+```js
 readyon.onReady(function() {
     $('[data-toggle="tooltip"]').tooltip({ html: true });
 });
@@ -133,7 +133,7 @@ Unfortunately, if DOM-specific inline JavaScript is required, we may not be able
 
 Make sure to bind the module (or handle calls to ```readyon.ready()``` manually):
 
-```JS
+```js
 // your-app.js
 readyon.bind();
 ```
@@ -156,7 +156,7 @@ Otherwise, if you are sure that no logic has to be executed on the DOM via inlin
 
 Make sure to initialize and possibly bind the module again.
 
-```JS
+```js
 // your-app.js
 readyon.init().bind();
 ```
@@ -167,7 +167,7 @@ readyon.init().bind();
 
 The configuration options can be passed as an object to ```readyon.init()```, if necessary:
 
-```JS
+```js
 readyon.init({
     log: true
 });
@@ -196,7 +196,7 @@ Things to remind when using the ready-or-not module:
 - Handlers registered via ```readyon.onReady()``` are executed each time ```readyon.ready()``` is triggered; handlers registered via ```readyon.onReadyOnce()``` are executed only once ```readyon.ready()``` is triggered next time.
 - Handlers registered via ```readyon.onReady()``` are *always* executed *before* handlers registered via ```readyon.onReadyOnce()```.
 - To help you specify your own event bindings, here are the default definitions from the module's ```bind``` method:
-```JS
+```js
 $(function() {
    readyon.ready();
 });
