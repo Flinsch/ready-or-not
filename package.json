@@ -10,7 +10,7 @@
     "DOMContentLoaded",
     "load",
     "onload",
-    "ajax",
+    "AJAX",
     "complete"
   ],
   "author": "Flinsch <flinsch@gmx.net>",
