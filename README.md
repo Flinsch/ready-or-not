@@ -4,6 +4,8 @@ ready-or-not
 
 ready-or-not is a small JavaScript module to run "ready" handlers flexibly and possibly multiple times, for example every time an AJAX request has been completed and after the DOM content has been loaded.
 
+> **Note:** This documentation is primarily aimed at developers of classic browser applications. But the module can also be easily used in Node.js.
+
 - [Motivation](#motivation)
 - [Usage](#usage)
 - [Configuration options](#configuration-options)
@@ -185,7 +187,7 @@ Things to remind when using the ready-or-not module:
 
 - Initialize ready-or-not via ```readyon.init()``` after including the script file and before using the module.
 - If you plan to run logic on the DOM via inline JavaScript, you have to include the script file at the beginning of the document; otherwise, the script can be put at the bottom of the document.
-- If you don't like pre-loading a script at the beginning of the document at all, you can still include the module as inline JavaScript; it's actually not that much code, really.
+- If you don't like pre-loading a script at the beginning of the document at all, you can still include (relevant parts of) the module as inline JavaScript; it's actually not that much code, really.
 - If desired, automatically bind the module to jQuery's "ready" and "ajaxComplete" events via ```readyon.bind()``` *after* including jQuery.
 - If ```domLoadDefault``` and ```ajaxCompleteDefault``` both are set to ```false```, a call to ```readyon.bind()``` has no effect at all.
 - If a call to ```readyon.bind()``` is omitted, you have to bind ```readyon.ready``` differently to certain events and/or call it manually.
